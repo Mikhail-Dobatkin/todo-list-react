@@ -1,0 +1,17 @@
+.task-add {
+    margin-left: 40%;
+}
+.task-add input {
+    border: none;
+    border-bottom: 1px solid #25ccad;
+    width: 215px;
+    height: 25px;
+    outline: none;
+}
+.task-add button {
+    width: 95px;
+    height: 27px;
+    background: #23eb73;
+    border: none;
+    border-radius: 6px;
+}
