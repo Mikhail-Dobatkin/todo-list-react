@@ -1,48 +1,33 @@
 import React, { useState } from 'react'
-import TodoService from '../../service/todoService/TodoService'
-import { ITodo } from '../../models/interface/interface'
 import { TodoFormComponent } from './todo-form-component'
 import './style.css'
+import { useDispatch } from 'react-redux'
+import { createTodo } from '../../store/action-creators/action'
 
-interface TodoFormProp {
-    newTaskHandler: (task: ITodo) => void
-}
-
-export const TodoFormContainer = ({ newTaskHandler }: TodoFormProp) => {
+export const TodoFormContainer = (): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>('')
 
-  const createTodo = async (body: ITodo) => {
-    try {
-      const todo: ITodo = await TodoService.createNewTodo(body)
-      newTaskHandler(todo)
-    } catch (e) {
-      console.log('Error in function createTask', e)
-    }
-  }
+  const dispatch = useDispatch()
 
   const setInputValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setInputValue(value)
   }
 
-  const todoSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const todoSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     if (inputValue.trim() === '') {
       return
     }
 
-    const body: ITodo = {
+    const body = {
+      _id: JSON.stringify(Date.now()),
       title: inputValue,
       isCheck: false
     }
-
-    try {
-      await createTodo(body)
-      setInputValue('')
-    } catch (e) {
-      console.log('Error in function createTask')
-    }
+    dispatch(createTodo(body))
+    setInputValue('')
   }
 
   return (

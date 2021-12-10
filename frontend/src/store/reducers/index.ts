@@ -2,5 +2,7 @@ import { combineReducers } from 'redux'
 import { todoReducer } from './reducers'
 
 export const rootReducer = combineReducers({
-  todo: todoReducer
+  todos: todoReducer
 })
+
+export type RootState = ReturnType<typeof rootReducer>

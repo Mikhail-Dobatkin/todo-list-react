@@ -1,20 +1,25 @@
 import React from 'react'
 import Todo from '../todo/todo'
 import { ITodo } from '../../models/interface/interface'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/reducers'
 
 interface TodosComponentProp {
-    todos: ITodo[]
-    deleteTodo: (id: ITodo['_id']) => void
+    removeTodo: (id: ITodo['_id']) => void
     toggleIsCheck: (todo: ITodo) => void
 }
 
-export const TodosComponent = ({ todos, deleteTodo, toggleIsCheck }:TodosComponentProp): JSX.Element => {
+export const TodosComponent = ({ removeTodo, toggleIsCheck }:TodosComponentProp): JSX.Element => {
+  const todos = useSelector((state: RootState) => {
+    return state.todos.todos
+  })
+
   return (
         <div className='task-container'>
-            {todos.map((todo) => {
-              return <Todo key={`${todo._id}_${todo.title}_${todos.length}`}
+            {todos.map((todo: ITodo) => {
+              return <Todo key={`${todo._id}_${todo.title}`}
                              todo={todo}
-                             deleteTodo={deleteTodo}
+                             removeTodo={removeTodo}
                              toggleIsCheck={(todo) => toggleIsCheck(todo)} />
             })}
         </div>
