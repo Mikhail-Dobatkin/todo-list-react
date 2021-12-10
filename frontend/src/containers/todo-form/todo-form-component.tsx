@@ -6,6 +6,7 @@ interface TodoFormComponentProp {
     inputValue: string;
 }
 
+// todo eslint rule for max string value
 export const TodoFormComponent: FC<TodoFormComponentProp> = ({ setInputValueHandler, todoSubmit, inputValue }) => {
   return (
         <div className='task-add'>

@@ -29,11 +29,11 @@ interface FetchTodosSuccessAction {
     payload: ITodo[]
 }
 
-interface CreateTodoAction {
+export interface CreateTodoAction {
     type: TodoActionTypes.CREATE_TODO
 }
 
-interface CreateTodoSuccessAction {
+export interface CreateTodoSuccessAction {
     type: TodoActionTypes.CREATE_TODO_SUCCESS
     payload: ITodo
 }
@@ -44,7 +44,7 @@ interface DeleteTodoAction {
 
 interface DeleteTodoActionSuccess {
     type: TodoActionTypes.DELETE_TODO_SUCCESS
-    payload: string
+    payload: ITodo['_id']
 }
 
 interface TodoChangeState {

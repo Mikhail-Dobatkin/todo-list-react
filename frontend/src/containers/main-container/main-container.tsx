@@ -10,17 +10,19 @@ export const MainContainer = (): JSX.Element => {
 
   useSelector((state: RootState) => state.todos.todos)
 
+  // todo create action
   const fetchTodos = () => {
     return (dispatch(({ type: TodoActionTypes.FETCH_TODOS_SUCCESS, payload: [] })))
   }
 
+  // todo esint rule for semilicon
   useEffect(() => {
-    dispatch(fetchTodos())
+    fetchTodos()
   }, [])
   return (
-            <>
-                <TodoFormContainer />
-                <TodosContainer />
-            </>
+    <>
+      <TodoFormContainer />
+      <TodosContainer />
+    </>
   )
 }

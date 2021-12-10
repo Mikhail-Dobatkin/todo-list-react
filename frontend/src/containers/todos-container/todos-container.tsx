@@ -15,6 +15,7 @@ export const TodosContainer = (): JSX.Element => {
       title,
       isCheck: !isCheck
     }
+
     dispatch(changeTodo(body))
   }
 

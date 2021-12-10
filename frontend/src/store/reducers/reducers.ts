@@ -19,10 +19,10 @@ export const todoReducer = (state = initialState, action: TodoAction): TodoState
       return {
         ...state,
         todos: [...state.todos.map((todo: ITodo) => {
-          console.log(todo, action.payload)
           if (todo._id === action.payload._id) {
             todo.isCheck = !todo.isCheck
           }
+
           return todo
         })]
       }

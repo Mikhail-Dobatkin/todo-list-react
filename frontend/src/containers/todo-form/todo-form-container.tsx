@@ -11,6 +11,7 @@ export const TodoFormContainer = (): JSX.Element => {
 
   const setInputValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
+
     setInputValue(value)
   }
 
@@ -26,6 +27,7 @@ export const TodoFormContainer = (): JSX.Element => {
       title: inputValue,
       isCheck: false
     }
+
     dispatch(createTodo(body))
     setInputValue('')
   }

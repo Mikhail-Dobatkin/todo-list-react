@@ -10,9 +10,9 @@ interface TodosComponentProp {
 }
 
 export const TodosComponent = ({ removeTodo, toggleIsCheck }:TodosComponentProp): JSX.Element => {
-  const todos = useSelector((state: RootState) => {
-    return state.todos.todos
-  })
+  const todos = useSelector((state: RootState) => state.todos.todos)
+
+  // todo separate function for map
 
   return (
         <div className='task-container'>
